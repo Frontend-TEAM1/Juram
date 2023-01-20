@@ -1,0 +1,20 @@
+> Today's summary
+    - 1조 코어타임 11:00 ~ 12:00
+
+> 개념 공부
+
+> 코딩 공부 
+    - 특별반 마지막 과제 시작 14:00 ~
+
+> To-Do List
+    - 1일 1commit 실천하기
+    - 퀴즈 20문제 풀기 (11번~30번)
+    - Monstercat 슬라이드 배너와 카드 구현
+    - work.html
+    - DOM API 강의 준비
+    - React todolist 하기
+    - 특별반 마지막 과제하기
+    - git 정리하기(desktop local + laptop local)
+
+> Wish List
+    - json url활용하여 페어끼리 토이프로젝트로 연습하기 (아마 특별반 과제랑 비슷할 예정)
