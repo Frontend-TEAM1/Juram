@@ -5,3 +5,4 @@ let arr = [100, 200, 300];
 console.log(typeof(arr));
 
 // 예상 답 : 4 object
+// 실제 답 : object
