@@ -1,0 +1,35 @@
+> Today's summary
+    - 지난주 강의 복습 (리액트 초기 내용)
+
+> 개념 공부
+    - 리액트를 위한 기초의 기초의 기초
+        * App.js 내에 BrowserRouter, Routes, Route의 차이점
+            Routes가 가장 중요하다고 생각됨.
+
+        * export default 개념 이해하기
+            js파일에서 export default 함수명 한다면, import시 이름 변경 가능 (key값 아님) 
+                ex import LoginForm from "./components/Form/Login";
+            export const 화살표함수 || export function 함수명 한다면, import시 key값이므로 이름 변경 불가하고 { key값 }을 넣어줘야함.
+                ex import { TodoPage } from "./pages/Todo";
+
+        * 모듈화 하는 연습하기.
+            어떤 화면을 보며 어떻게 모듈단위로 쪼갤지 고민하는 연습 필요
+
+        * 만약 실행이 안되거나 에러가 뜬다면 import 확인하기
+            태그 이름도 대소문자가 있으니 확인..!
+
+    - 궁금한 점(질문)
+        * 왜 나는 태그를 쓸때 자동완성이 안뜰까.. 플러그인 고민..
+        * 태그 안에 이벤트 들어갈 때 .html에서는 onclick="..." 인데 왜 리액트에서는 onClick={...}일까?
+        * src/pages/Home/components/index.js의 #9 const {innerText} = e.target 구조 이해안됨
+
+> 코딩 공부 
+    - 개념 익히느라 오늘은 못함.. (반성하자)
+
+> To-Do List
+    - 리액트 개념 숙지
+    - disk.html 지금까지 짠 코드 싹 날리고 한글 설계부터 다시 해보기
+    - 특별반 마지막 과제 한글설계부터 다시 해보기
+
+> Wish List
+    - json url활용하여 페어끼리 토이프로젝트로 연습하기 (아마 특별반 과제랑 비슷할 예정)
