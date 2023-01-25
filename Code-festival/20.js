@@ -7,3 +7,11 @@
 
 // 입력 : 10 2
 // 출력 : 5 0
+
+function divided(a, b) {
+    let result1 = Math.round(a/b);
+    let result2 = a%b;
+    return (result1+ ' ' + result2);
+}
+
+console.log(divided(10, 3));

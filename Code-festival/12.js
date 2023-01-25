@@ -4,7 +4,19 @@
 // **주어진 소스 코드를 수정해선 안됩니다.**
 
 // 데이터
-{/* <여기에 class를 작성하세요.> */}
+class Wizard {/* <여기에 class를 작성하세요.> */
+
+constructor(a, b, c) {
+    this.health = a;
+    this.mana = b;
+    this.armor = c;
+}
+
+attack() {
+    console.log('파이어볼');
+}
+}
+
 
 const x = new Wizard(545, 210, 10);
 console.log(x.health, x.mana, x.armor);

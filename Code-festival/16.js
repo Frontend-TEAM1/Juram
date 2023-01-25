@@ -6,3 +6,12 @@
 
 // 입력 : 거꾸로
 // 출력 : 로꾸거
+
+function reverse(text) {
+    let split = text.split("");
+    let reversed = split.reverse();
+    let join = reversed.join("");
+    return join;
+}
+
+console.log(reverse('거꾸로'));

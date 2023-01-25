@@ -9,3 +9,10 @@
 
 // 입력 : 20 30 40
 // 출력 : 30
+
+function average(k, m, e) {
+    let sum = k+m+e;
+    return Math.round(sum/3);
+}
+
+console.log(average(100, 90, 90));

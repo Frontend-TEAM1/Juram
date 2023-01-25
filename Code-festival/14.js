@@ -13,3 +13,10 @@
 
 // 입력 : 2
 // 출력 : 2
+
+function three(num) {
+    if(num%3 === 0) console.log("짝");
+    else console.log(num);
+}
+
+three(10);

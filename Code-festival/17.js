@@ -5,3 +5,9 @@
 
 // 입력으로 키가 주어지면
 // 키가 150이 넘으면 **YES**를 틀리면 **NO**를 출력하는 프로그램을 작성하세요.
+
+function check(height) {
+    return (height >= 150) ? "**YES**" : "**NO**";
+}
+
+console.log(check(160));
