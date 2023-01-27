@@ -1,0 +1,9 @@
+Module
+    header
+    text with 1 button
+    brand logo animation
+    footer
+
+Module X
+    image
+    text only

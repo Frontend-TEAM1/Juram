@@ -51,7 +51,7 @@ function changeTabs(e) {
 const $input = document.getElementById('te_input');
 $input.maxLength = 10;
 
-$input.addEventListener('onkeypress', numberCheck);
+$input.addEventListener('keypress', numberCheck);
 
 function numberCheck(e) {
     console.log(e.test);

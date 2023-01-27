@@ -1,0 +1,56 @@
+DOM API
+    DOM API를 활용하여 js로 사용자에게 보여지는 화면을 변경할 수 있다.
+    백엔드로부터 받은 데이터(쉽게 생각해서 자주 변하는 데이터)를 받아서 뿌려질 떄 사용
+
+보통 변수명 앞에 '$'표시를 하여 구분하고, <요소> 선택하는 방법은 다양함.
+    document.getElementById(); 
+  v document.getElementsByClassName();
+  v document.getElementsByTagName();
+  v document.getElementsByName();
+    document.querySelector();       -> query를 이용하여 가져오는 건 CSS선택자로 받음(.class / #id 등)
+  v document.querySelectorAll();    -> query를 이용하여 가져오는 건 CSS선택자로 받음(.class / #id 등)
+  v체크 한 건 배열로 반환. 따라서 가져온 <요소>는 배열이라 [index]로 접근 가능
+
+Style
+    자주 사용되는 속성이 있긴하지만 자세하고 정확하게 파악하기 위해선 실행시킨 후 F12 -> properties로 확인 후 변경하면 편함
+
+Attribute
+    속성 변경 / set(설정), get(조회), remove(삭제)를 이용하면 inline-CSS로 들어가 다른 css 무시하고 적용됨.
+    >> 인라인보다 더 큰 우선순위를 가지는 건 !important
+
+AddEventListener
+    조금 어려울 수 있지만, 강사님 말씀처럼 누가 나를 불렀는가를 이용하기 위한 방법인듯. (아니면 지울게요)
+    여기서 중요한건 이벤트 자체가 넘어오는 거라 target 등으로 접근해야하는 경우가 많음.
+
+    바인딩하는 함수는 기명함수, 익명함수, 화살표 함수 다 가능. 하지만 this가 달라진다고 하는데 아직 안배움 (나중에 추가하세요)
+
+캡쳐링 / 버블링
+    캡쳐링은 상위 요소 -> 하위 요소로 이벤트가 없는데 번져서 적용되는 것
+    버블링은 상위 요소 <- 하위 요소로 이벤트가 없는데 번져서 적용되는 것
+    전파 방지 위해선, submit 속성을 가졌을 경우는 event.preventDefault(); -> 괄호 필수
+    event.stopPropagation(); 이벤트가 상위 요소에 전달되지 않게 막아주는 역할
+
+classList
+    말에서 유추 하듯 class에 걸어서 만들어둔 CSS를 원하는 때에 맞춰 붙였다 뗐다 하는 느낌
+    contain(유무 확인 후 boolean으로 반환) / add('클래스명') / remove('클래스명') or empty();
+
+
+---------------------------------------------------여기서부턴 구글링--------------------------------------------------------
+
+노드 추가할 때
+    appendChild() : 새로운 노드를 해당 노드의 자식 노드 리스트에 맨 마지막 노드로 추가함.
+    insertBefore() : 새로운 노드를 특정 노드 바로 앞에 추가함.
+    insertData() : 텍스트 노드의 텍스트 데이터에 새로운 텍스트를 추가함.
+
+노드 생성할 때
+    createElement() : 새로운 요소 노드를 생성함.
+    createAttribute() : 새로운 속성 노드를 생성함.
+    createTextNode() : 새로운 텍스트 노드를 생성함.
+
+노드 제거할 때
+    removeChild() : 기존의 노드 리스트에서 특정 노드를 제거함.
+    removeAttribute() : 속성의 이름을 이용하여 특정 속성 노드를 제거함.
+
+Node와 Element의 차이
+    Node는 텍스트 노드가 포함한다.
+    Element는 공백과 텍스트 노드를 포함하지 않는다. ( 태그만 )
