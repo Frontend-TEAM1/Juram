@@ -11,3 +11,9 @@
 
 // 입력 : mary
 // 출력 : MARY
+
+function capital(name) {
+    return name.toUpperCase();
+}
+
+console.log(capital('mary'));

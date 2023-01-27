@@ -11,3 +11,10 @@
 
 // 출력
 // 4
+
+function findIt(str1, str2) {
+    if(str1.includes(str2)) return str1.indexOf(str2);
+    return console.log("틀림");
+}
+
+console.log(findIt('pineapple is yummy', 'is'));

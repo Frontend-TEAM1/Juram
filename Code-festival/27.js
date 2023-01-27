@@ -9,4 +9,16 @@
 // 70 100
 
 // 출력
-// {'Yujin': 70, 'Hyewon': 100}
+// {'Yujin': 70, 'Hyewon': 100} 
+
+let name1, name2;
+let math1, math2;
+let myObj = {};
+
+function obj() {
+    myObj.name1 = 70;
+    myObj.name2 = 100;
+    return myObj;
+}
+
+console.log(obj());
