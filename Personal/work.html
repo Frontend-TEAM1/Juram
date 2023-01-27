@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script>
+    // 1.페이지가 로딩 될 때 이곳의 글씨를 변경하시오.
+    window.onload = function() {      // 실행되기 전에 읽고 시작(단순하게 DOM 객체를 활용할 때는 사용X)
+            const $changedTxt = document.getElementById('display').children[0].children[0];
+            $changedTxt.innerHTML = "글씨 변경됨"
+        }
+  </script>
   <head>
     <meta charset="UTF-8" />
     <title>Title</title>
@@ -58,11 +65,11 @@
         3. 위의 탭 클릭시 아래의 컨텐츠중 탭과 숫자가 같은 것만 보이게 하시오.
       </p>
       <div class="tab_body">
-        <div class="block">탭1 컨텐츠</div>
-        <div class="block">탭3 컨텐츠</div>
-        <div class="block">탭2 컨텐츠</div>
-        <div class="block">탭5 컨텐츠</div>
-        <div class="block">탭4 컨텐츠</div>
+        <div class="block" id="탭1">탭1 컨텐츠</div>
+        <div class="block" id="탭3">탭3 컨텐츠</div>
+        <div class="block" id="탭2">탭2 컨텐츠</div>
+        <div class="block" id="탭5">탭5 컨텐츠</div>
+        <div class="block" id="탭4">탭4 컨텐츠</div>
       </div>
       <p>
         4. 아래의 입력창에 숫자가 입력되지 않도록 하고 길이 제한은 10자로
@@ -93,4 +100,5 @@
       </form>
     </div>
   </body>
+  <script src="./work.js"></script>
 </html>
