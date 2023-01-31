@@ -4,10 +4,11 @@
 
 
 function myResult(a, b) {
+    let result=1;
     for(let i = 0 ; i < b ; i++) {
-        a *= a;
-        console.log(a);
+        result = a * result;
     }
+    return result;
 }
 
 console.log(myResult(2, 3));
