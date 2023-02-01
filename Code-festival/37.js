@@ -16,12 +16,11 @@ function vote(s) {
     let result = {}
     for(const el of s) {
         result[el] = (result[el] || 0) + 1;
-        console.log("============" + result['원범']);
         console.log(result[el]);
     }
-    for( const item of result ) {
-        
-    }
+
+
+
 }
 
 console.log(vote(s));

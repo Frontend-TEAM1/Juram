@@ -10,6 +10,22 @@
 // 입력 : 97 86 75 66 55 97 85 97 97 95
 // 출력 : 6
 
-function temp() {
-    
+function temp(arr) {
+    let result = [];
+
+    arr.sort(function (a, b) {  // 내림차순
+        if (a > b) return -1;
+        else if (b > a) return 1;
+        else return 0;
+      });
+
+    const set = [...new Set(arr)];  // 중복제거
+    const setPiece = set.splice(0, 3);  // 상위 3등까지만 잘라서
+    for( el of arr) {
+        if(setPiece.includes(el)) result.push(el);
+    }
+    return result.length;
 }
+
+let myInput = [ 97, 86, 75, 66, 55, 97, 85, 97, 97, 95 ];
+console.log(temp(myInput));
