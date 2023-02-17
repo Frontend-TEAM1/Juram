@@ -1,6 +1,5 @@
 import PlayListMock from "../../__mock__/playList.json";
-import { useRef } from "react";
-
+import { useRef, useState } from "react";
 
 function State1() {
   /* 
@@ -13,11 +12,32 @@ function State1() {
     삭제 버턴을 눌렀을 때 데이터가 삭제될 수 있도록 해주세요
   */
 
-  console.log(PlayListMock.playlist);
+  // console.log(PlayListMock.playlist);
   /* 데이터 콘솔에 찍어두었으니 확인해볼 것 */
 
-  const newPlayListMock = [...PlayListMock];
+  const [title, setTitle] = useState('');
+  const [singer, setSinger] = useState('');
+  const [playList, setPlayList] = useState(PlayListMock.playlist);
 
+
+  const getTitle = (e) => {
+    setTitle(e.target.value);
+  }
+
+  const getSinger = (e) => {
+    setSinger(e.target.value);
+  }
+
+  const addToList = () => {
+    const newSong = {title, singer};
+    const newPlayList = [...playList, newSong];
+    setPlayList(newPlayList);
+  }
+
+  const removeList = () => {
+    const newPlayList = playList.filter((song) => song.title !== title)
+    setPlayList(newPlayList);
+  } 
 
   return (
     <>
@@ -25,28 +45,23 @@ function State1() {
       <ul>
         {/* list */}
         {/* 예시 데이터입니다 */}
-        {PlayListMock.map((song) => { 
+        {playList.map((song) => (
           <li>
             <h3>{song.title}</h3>
-            <p>{song.signer}</p>
+            <p>{song.singer}</p>
           </li>
-})}
-
-        <li>
-          <h3>Summer</h3>
-          <p>Joe Hisaishi</p>
-        </li>
+        ))}
       </ul>
       <div>
         <p>
-          곡명 : <input />
+          곡명 : <input onChange={getTitle}/>
         </p>
         <p>
-          가수/작곡 : <input />
+          가수/작곡 : <input onChange={getSinger}/>
         </p>
         <p>
-          <button>추가</button>
-          <button>삭제</button>
+          <button onClick={addToList}>추가</button>
+          <button onClick={removeList}>삭제</button>
         </p>
       </div>
     </>

@@ -63,6 +63,29 @@ function State2() {
     ],
   });
 
+  const [name, setName] = useState('');
+  const [com, setCom] = useState('');
+
+  const getName = (e) => {
+    setName(e.target.value);
+  }
+
+  const getCom = (e) => {
+    setCom(e.target.value);
+  }
+
+  const onAddClick = () => {
+    const newPost = post.Comments.push({
+      User: {
+        nickname: name,
+      },
+      content: com,
+      myComment: true,
+    })
+
+    setPost({...post, newPost});
+  }
+
   return (
     <S.Wrapper>
       <h1>문제2</h1>
@@ -85,14 +108,12 @@ function State2() {
         <p>
           댓글 수: <span>{post.Comments.length}</span>
         </p>
-        <input placeholder="작성자" />
-        <input placeholder="댓글 내용" />
-        <button>댓글 작성</button>
+        <input placeholder="작성자" onChange={getName}/>
+        <input placeholder="댓글 내용" onChange={getCom}/>
+        <button onClick={onAddClick}>댓글 작성</button>
       </div>
       <S.CommentList>
-        {/* list */}
-        {/* 예시 데이터 */}
-        <Comment />
+        <Comment post={post}/>
       </S.CommentList>
     </S.Wrapper>
   );
@@ -140,6 +161,7 @@ const PostInfo = styled.div`
 const CommentList = styled.ul`
   width: 960px;
 `;
+
 
 const S = {
   Wrapper,
