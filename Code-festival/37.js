@@ -18,8 +18,7 @@ function vote(s) {
         result[el] = (result[el] || 0) + 1;
         console.log(result[el]);
     }
-
-
+    return result;
 
 }
 

@@ -57,12 +57,18 @@ function selectImg(event) {
 
   // for in으로 했을때는 왜 remove에 에러가 났을까?
   // for (el in songs) {
+  //   console.log(songs);
   //   if (event.target.parentElement === songs[el]) {
+  //     console.log(event.target.parentElement);
   //     songs[el].classList.add("play");
   //     currentIndex = [...songs].findIndex((item) => item == this);
+  //     console.log(currentIndex);
   //     selected = true;
   //     bgUpdate();
-  //   } else songs[el].classList.remove("play");   
+  //   } else {
+  //     songs[el].classList.remove("play"); 
+  //     console.log("123456")
+  //   };  
   // }
 }
 
@@ -79,13 +85,9 @@ function bgUpdate() {
   );
 
   // Play시 배경이 앨범 이미지로 바뀌는건 구현 못함.. 어디에 접근해야할까?
-  // if( selected === true && playStatus === true) {
-  //   // $main.style.backgroundImage = `url('${musicListData[currentIndex].src}')`;
-  //   $main.setAttribute(
-  //     "style",
-  //     `background: src('${musicListData[currentIndex].src})`
-  //   );
-  // }
+  if( selected === true && playStatus === true) {
+    $main.style.backgroundImage = `url('${musicListData[currentIndex].src}')`;
+  }
 }
 
 
@@ -134,12 +136,14 @@ function playMusic() {
   $disk.classList.add('active');
   $main.children[0].src = musicListData[currentIndex].src;
   }
+  bgUpdate();
 }
 
 function stopMusic() {
   playStatus = false;
   $main.children[0].src = ""
   $disk.classList.remove('active');
+  bgUpdate();
 }
 
 
