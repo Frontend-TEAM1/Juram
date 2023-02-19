@@ -63,36 +63,47 @@ function State2() {
     ],
   });
 
-  const [name, setName] = useState('');
-  const [com, setCom] = useState('');
+  const [comments, setComments] = useState(post.Comments);
+  
+  const [name, setName] = useState("");
+  const [com, setCom] = useState("");
 
   const getName = (e) => {
     setName(e.target.value);
-  }
+  };
 
   const getCom = (e) => {
     setCom(e.target.value);
-  }
+  };
 
   const onAddClick = () => {
     const newPost = post.Comments.push({
+      
       User: {
         nickname: name,
       },
       content: com,
       myComment: true,
-    })
+    });
 
-    setPost({...post, newPost});
+    setPost({ ...post, newPost });
+  };
+
+  const onDeleteClick = (index) => {
+    console.log('-----------------------', index);
+    let survived = comments.filter((item, idx) => ( idx !== index ));
+    setComments(survived);
   }
 
   return (
     <S.Wrapper>
       <h1>문제2</h1>
+
       <S.PostBox>
         <S.PostTitle>제목: {post.title}</S.PostTitle>
         <S.PostContent>내용: {post.content}</S.PostContent>
       </S.PostBox>
+
       <S.PostInfo>
         <p>
           작성자: <span>{post.User.nickname}</span>
@@ -104,17 +115,21 @@ function State2() {
           작성자 키: <span>{post.User.height}</span>
         </p>
       </S.PostInfo>
+
       <div>
         <p>
           댓글 수: <span>{post.Comments.length}</span>
         </p>
-        <input placeholder="작성자" onChange={getName}/>
-        <input placeholder="댓글 내용" onChange={getCom}/>
+        <input placeholder="작성자" onChange={getName} />
+        <input placeholder="댓글 내용" onChange={getCom} />
         <button onClick={onAddClick}>댓글 작성</button>
       </div>
-      <S.CommentList>
-        <Comment post={post}/>
-      </S.CommentList>
+
+      {comments.map((com, index) => (
+        <S.CommentList >
+          <Comment com={com} index={index} onDeleteClick={onDeleteClick}/>
+        </S.CommentList>
+      ))}
     </S.Wrapper>
   );
 }
@@ -161,7 +176,6 @@ const PostInfo = styled.div`
 const CommentList = styled.ul`
   width: 960px;
 `;
-
 
 const S = {
   Wrapper,
