@@ -27,20 +27,16 @@ function Q1() {
 
   // 문제 1-1
   const [isMatch, setIsMatch] = useState(false);
-  const [message, setMessage] = useState("");
 
   const checkInput = (e) => {
     if (!e.target.value) {
-      setIsMatch(true);
-      setMessage("");
-      return;
-    }
-    if (e.target.value !== e.target.placeholder) {
-      setMessage("올바르게 글을 작성해주세요");
       setIsMatch(false);
       return;
     }
-    setMessage("올바르게 입력하셨습니다");
+    if (e.target.value !== e.target.placeholder) {
+      setIsMatch(false);
+      return;
+    }
     setIsMatch(true);
   };
 
@@ -64,7 +60,7 @@ function Q1() {
           style={{ textAlign: "center" }}
           onChange={checkInput}
         />
-        <S.Message isMatch={isMatch}> {message} </S.Message>
+        <S.Message isMatch={isMatch}> {isMatch ? "올바르게 입력하셨습니다" : "올바르게 글을 작성해주세요"} </S.Message>
       </div>
 
       <div>

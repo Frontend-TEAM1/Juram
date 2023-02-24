@@ -54,12 +54,9 @@ function State3() {
       <h1>문제3</h1>
       <h2>상품 목록</h2>
       <ul>
-        {products.map((product) => (
-          <ProductCard
-            onNavigate={onNavigateDetailPage}
-            product={product}
-          />
-        ))}
+        {/* list */}
+        {/* 예시 데이터 */}
+        {products.map((product) => ( <ProductCard onNavigate={onNavigateDetailPage} product={product} />))}
       </ul>
     </>
   );
