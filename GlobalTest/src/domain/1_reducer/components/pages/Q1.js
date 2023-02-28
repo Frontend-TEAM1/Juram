@@ -18,15 +18,22 @@ const ReducerQ1Page = () => {
           src/store/1_reducer.js에 구현해보세요
     */
 
-  // const [ingredients, setIngredients] = useState([
-  //   { id: 1, name: "피자 도우", price: 1000 },
-  //   { id: 2, name: "토마토 소스", price: 500 },
-  //   { id: 3, name: "치즈", price: 1000 },
-  //   { id: 4, name: "피망", price: 500 },
-  //   { id: 5, name: "양파", price: 500 },
-  // ]);
+   // const [ingredients, setIngredients] = useState([
+   //   { id: 1, name: "피자 도우", price: 1000 },
+   //   { id: 2, name: "토마토 소스", price: 500 },
+   //   { id: 3, name: "치즈", price: 1000 },
+   //   { id: 4, name: "피망", price: 500 },
+   //   { id: 5, name: "양파", price: 500 },
+   // ]);
 
-  const [pizza, dispatch] = useReducer(pizzaReducer, []);
+   
+  const [pizza, dispatch] = useReducer(pizzaReducer, [
+      { id: 1, name: "피자 도우", price: 1000 },
+      { id: 2, name: "토마토 소스", price: 500 },
+      { id: 3, name: "치즈", price: 1000 },
+      { id: 4, name: "피망", price: 500 },
+      { id: 5, name: "양파", price: 500 },
+    ]);
   // console.log(dispatch({
   //   type
   // }))
@@ -71,7 +78,7 @@ const ReducerQ1Page = () => {
             <th>가격</th>
           </tr>
         </thead>
-        <ReducerQ1List ingredients={pizza.initialState} onDelete={onDelete} />
+        <ReducerQ1List ingredients={pizza} onDelete={onDelete} />
       </table>
       <Q1Form onSubmit={onSubmit} />
       <NavigateButton isFistPage to={"/2_context/q1"} />

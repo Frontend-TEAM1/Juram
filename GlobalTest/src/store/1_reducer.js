@@ -1,11 +1,11 @@
 
-const initialState = [
-    { id: 1, name: "피자 도우", price: 1000 },
-    { id: 2, name: "토마토 소스", price: 500 },
-    { id: 3, name: "치즈", price: 1000 },
-    { id: 4, name: "피망", price: 500 },
-    { id: 5, name: "양파", price: 500 },
-  ];
+// const initialState = [
+//     { id: 1, name: "피자 도우", price: 1000 },
+//     { id: 2, name: "토마토 소스", price: 500 },
+//     { id: 3, name: "치즈", price: 1000 },
+//     { id: 4, name: "피망", price: 500 },
+//     { id: 5, name: "양파", price: 500 },
+//   ];
 
 export const pizzaReducer = (state, action) => {
 
@@ -16,13 +16,14 @@ export const pizzaReducer = (state, action) => {
                 name: action.payload.name,
                 price: action.payload.price,
               }
-            return initialState.push(newIngredient);
+            // return initialState.push(newIngredient);
+            return [...state, newIngredient]
         case "DELETE":
             console.log(state)
             const newList = state.filter((item) => (item.id !== action.payload.id));
-            return initialState = newList;
+            return newList;
         default: 
-            return initialState;
+            return state;
     }
 }
 
