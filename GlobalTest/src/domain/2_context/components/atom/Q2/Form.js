@@ -1,22 +1,31 @@
 import { UserContext, useUserContext } from "../../../../../store/3_context";
 import ContextQ2Form2 from "./Form2";
 
-let name;
-let nickName;
+const ContextQ2Form = () => {
+  const { dispatch } = useUserContext();
 
-const ContextQ2Form = (addUser) => {
-  const [ users ] = useUserContext();
-  
-
+  const addUser = (e) => {
+    e.preventDefault();
+    if (!e.target.name.value || !e.target.nickName.value) return;
+    dispatch({
+      type: "ADD_to_LIST",
+      payload: {
+        name: e.target.name.value,
+        nickName: e.target.nickName.value,
+      },
+    });
+    e.target.name.value = "";
+    e.target.nickName.value = "";
+  };
 
   return (
-    <div>
+    <form onSubmit={addUser}>
       <h1>Q2Form</h1>
-      <input placeholder="name" onChange={(e) => name = e.target.value}/>
-      <input placeholder="nick-name" onChange={(e) => nickName = e.target.value}/>
-      <button onSubmit={() => addUser(name, nickName)}>추가</button>
+      <input placeholder="name" name="name" />
+      <input placeholder="nick-name" name="nickName" />
+      <button>추가</button>
       <ContextQ2Form2 />
-    </div>
+    </form>
   );
 };
 export default ContextQ2Form;

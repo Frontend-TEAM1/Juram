@@ -5,6 +5,8 @@ const Q1Form = ({ onSubmit }) => {
     const name = e.target.name.value;
     const price = e.target.price.value;
     onSubmit(name, price);
+    e.target.name.value = '';
+    e.target.price.value = '';
   }
 
   return (
