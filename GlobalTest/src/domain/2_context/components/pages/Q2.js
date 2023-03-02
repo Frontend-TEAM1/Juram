@@ -35,13 +35,11 @@ const ContextQ2Page = () => {
         4. 음 submit을 2번 눌렀을 떄 어떻게 해야하나 */
 
 
-  const [users, dispatch] = useReducer(userReducer, [
-    { id: 1, name: "홍길동", nickname: "히히" },
-  ]);
-  console.log(users);
+  const { dispatch } = useUserContext();
+
 
   return (
-    <UserContext.Provider value={{users, dispatch}}>
+    <>
       <h2>문제 2 - 2</h2>
       <ContextQ2Form/>
       <ContextQ2Form3 />
@@ -53,7 +51,7 @@ const ContextQ2Page = () => {
         <button onClick={() => dispatch({ type: 'SUBMIT' })}>SUBMIT</button>
       </div>
       <NavigateButton to={"/3_redux/q1"} />
-    </UserContext.Provider>
+    </>
   );
 };
 export default ContextQ2Page;

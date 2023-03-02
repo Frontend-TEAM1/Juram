@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 export const UserContext = createContext();
 export const useUserContext = () => useContext(UserContext);
@@ -14,13 +14,19 @@ export const userReducer = (state, action) => {
             return newUsers;
 
         case "RESET":
+            // const temp = [...state]
+            // temp = [];
+            // return temp;
             return [];
 
         case "SUBMIT":
+            // console.log(!state);
+            // console.log(state);
             if(!state) return;
             const submitList = state.filter((user) => user.isEdit === true);
+            // console.log(submitList);
             if(submitList.length === 0) return console.log('리스트가 비었습니다');
-            
+            // console.log(state.filter((user) => user.isEdit === true))
             return console.log(submitList);
 
         default:
@@ -28,16 +34,19 @@ export const userReducer = (state, action) => {
     }
 }
 
-// const UserProvider = ({children}) => {
-//     // const [users, dispatch] = useReducer(userReducer, [
-//     //     { id: 1, name: "홍길동", nickname: "히히" },
-//     //   ])
+const initialState = [
+    { id: 1, name: "홍길동", nickname: "히히" },
+  ];
 
-//       return (
-//         <UserContext.Provider>
-//             {children}
-//         </UserContext.Provider>
-//       )
-// };
+const UserProvider = ({children}) => {
+    
+    const [users, dispatch] = useReducer(userReducer, initialState);
 
-// export default UserProvider;
+      return (
+        <UserContext.Provider value={{users, dispatch}}>
+            {children}
+        </UserContext.Provider>
+      )
+};
+
+export default UserProvider;

@@ -4,6 +4,7 @@ import ContextQ1Detail2 from "./Detail2";
 
 const ContextQ1Detail = () => {
   const [isModalOpen, setIsModalOpen] = useModalContext();
+  console.log(useModalContext())
 
   // const changeMode = (prev) => {
   //   console.log(prev)

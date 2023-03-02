@@ -1,8 +1,19 @@
 const PostForm = ({ onSubmit }) => {
+
+  const addNewPost = (e) => {
+    e.preventDefault();
+    if(!e.target.title.value || !e.target.content.value) return;
+    const title = e.target.title.value;
+    const content = e.target.content.value;
+    onSubmit(title, content);
+    e.target.title.value = '';
+    e.target.content.value = '';
+  }
+
   return (
     <>
       <h2>POST-FORM</h2>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={addNewPost}>
         <label>
           <input type="text" name="title" placeholder="제목" />
         </label>
