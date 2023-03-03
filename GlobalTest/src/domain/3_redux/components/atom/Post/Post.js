@@ -1,35 +1,65 @@
-import Comment from "../Comment/Comment";
-import CommentForm from "../Comment/Form";
-import UserCard from "../UserCard/Card";
+import { useState } from 'react';
+import Comment from '../Comment/Comment';
+import CommentForm from '../Comment/Form';
+import UserCard from '../UserCard/Card';
 
-const Post = ({ post }) => {
-  const editing = false;
+const Post = ({
+  post,
+  onEditPost,
+  onDeletePost,
+  onAddComment,
+  onEditComment,
+  onDeleteComment,
+}) => {
+  const [editing, setEditing] = useState(false);
+  let newPostContent;
 
   const onEditClick = () => {
-    editing = !editing;
-    if(editing) {}
-  }
+    setEditing((editing) => !editing);
+    if (editing) {
+      onEditPost(post.id, newPostContent);
+    }
+  };
 
   return (
-    <div style={{ border: "1px solid #999", paddingTop: '10px'}} >
-      {post.myPost && <button type="button">수정</button>}
-      {post.myPost && <button type="button">삭제</button>}
+    <div style={{ border: '1px solid #999', paddingTop: '10px' }}>
+      {post.myPost && (
+        <button type='button' onClick={onEditClick}>
+          {editing ? '저장' : '수정'}
+        </button>
+      )}
+      {post.myPost && (
+        <button type='button' onClick={() => onDeletePost(post.User.id)}>
+          삭제
+        </button>
+      )}
       <h2>--PostTitle--</h2>
-      {editing ? <input name="title"/> : <h2>{post.title}</h2>}
+      <h2>{post.title}</h2>
       <UserCard user={post.User} />
       <h2>--PostContent--</h2>
-      <p>{post.content}</p>
-      <CommentForm />
+      {editing ? (
+        <textarea onChange={(e) => (newPostContent = e.target.value)}>
+          {post.content}
+        </textarea>
+      ) : (
+        <p>{post.content}</p>
+      )}
+      <CommentForm onAddComment={onAddComment} id={post.id} />
       <div
         style={{
-          display: "table",
-          borderCollapse: "collapse",
-          border: "1px solid #000",
-        }}
-      >
+          display: 'table',
+          borderCollapse: 'collapse',
+          border: '1px solid #000',
+        }}>
         {post.Comments &&
           post.Comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
+            <Comment
+              key={comment.id}
+              comment={comment}
+              id={post.id}
+              onEditComment={onEditComment}
+              onDeleteComment={onDeleteComment}
+            />
           ))}
       </div>
     </div>

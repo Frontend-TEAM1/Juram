@@ -1,11 +1,11 @@
-const PostForm = ({ onSubmit }) => {
+const PostForm = ({ onCreatePost }) => {
 
   const addNewPost = (e) => {
     e.preventDefault();
     if(!e.target.title.value || !e.target.content.value) return;
     const title = e.target.title.value;
     const content = e.target.content.value;
-    onSubmit(title, content);
+    onCreatePost(title, content);
     e.target.title.value = '';
     e.target.content.value = '';
   }

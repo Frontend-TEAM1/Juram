@@ -1,14 +1,21 @@
-import { useState } from "react";
-import { applyMiddleware, createStore } from "redux";
-import NavigateButton from "../../../../components/NavigateButton";
-import { rootReducer } from "../../../../store";
-import { MockPosts } from "../../../../__mock__/mockPosts";
-import PostForm from "../atom/Post/Form";
-import AllPosts from "../atom/Posts";
-import { Provider, useDispatch, useSelector } from "react-redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { logger } from "redux-logger";
-import { ADD_POST } from "../../../../store/4_redux";
+import { useState } from 'react';
+import { applyMiddleware, createStore } from 'redux';
+import NavigateButton from '../../../../components/NavigateButton';
+import { rootReducer } from '../../../../store';
+import { MockPosts } from '../../../../__mock__/mockPosts';
+import PostForm from '../atom/Post/Form';
+import AllPosts from '../atom/Posts';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { logger } from 'redux-logger';
+import {
+  CREATE_POST,
+  EDIT_POST,
+  DELETE_POST,
+  ADD_COMMENT,
+  EDIT_COMMENT,
+  DELETE_COMMENT,
+} from '../../../../store/4_redux';
 
 const ReduxQ1Page = () => {
   /* 문제 3
@@ -28,36 +35,59 @@ const ReduxQ1Page = () => {
   // ---------------------------REQUIREMENT---------------------------
 
   /* <구현 순서>
-        1. store/index.js에 rootReducer 생성
+        1. store/index.js에 store생성, store/index.js에 rootReducer 생성
         2. npm i redux react-redux / npm i -D redux-devtools-extension redux-logger 설치
         3. reducer(4_redux.js)에서 사용할 변수 생성 및 reducer 로직 정의
-        4. 
+        4. 랜더링과 리랜더링에 좀 더 신경 쓰고, 남발하지 않기 위해 변수 사용
     ...............................................
      <힘들었던 점>
         1. store의 선언위치
-        2. 
-        3. 
-        4.  */
+        2. 댓글에 접근하는것 */
 
   const POSTS = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
-  
-  const onSubmit = (title, content) => {
-    console.log("submit");
-    dispatch(ADD_POST({title, content}));
+
+  const onCreatePost = (title, content) => {
+    console.log('create post');
+    dispatch(CREATE_POST({ title, content }));
   };
 
-  const onEdit = (title, content) => {
-    console.log("submit");
-    dispatch(ADD_POST({title, content}));
+  const onEditPost = (id, content) => {
+    console.log('edit post');
+    dispatch(EDIT_POST({ id, content }));
   };
 
+  const onDeletePost = (id) => {
+    console.log('delete post');
+    dispatch(DELETE_POST({ id }));
+  };
 
+  const onAddComment = (name, content, id) => {
+    console.log('add comment');
+    dispatch(ADD_COMMENT({ name, content, id }));
+  };
+
+  const onEditComment = (id, commentId, content) => {
+    console.log('edit comment');
+    dispatch(EDIT_COMMENT({ id, commentId, content }));
+  };
+
+  const onDeleteComment = (id, commentId) => {
+    console.log('delete comment');
+    dispatch(DELETE_COMMENT({ id, commentId }));
+  };
 
   return (
     <>
-      <PostForm onSubmit={onSubmit} />
-      <AllPosts posts={POSTS} />
+      <PostForm onCreatePost={onCreatePost} />
+      <AllPosts
+        posts={POSTS}
+        onEditPost={onEditPost}
+        onDeletePost={onDeletePost}
+        onAddComment={onAddComment}
+        onEditComment={onEditComment}
+        onDeleteComment={onDeleteComment}
+      />
       <NavigateButton isLastPage />
     </>
   );
