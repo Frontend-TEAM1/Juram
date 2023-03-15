@@ -30,10 +30,11 @@ export default Card;
 
 const Container = styled.div`
   width: 30%;
-  border: 1px dashed grey;
+  /* border: 1px dashed grey; */
   border-radius: 10px;
   padding: 10px;
   font-size: 15px;
+  box-shadow: 0 5px 18px -10px rgba(0, 0, 0, 0.7);
 `;
 
 const Header = styled.div`

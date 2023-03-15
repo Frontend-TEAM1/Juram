@@ -18,7 +18,14 @@ function IssueDetail() {
         issue.body issue.body issue.body issue.body issue.body issue.body
         issue.body issue.body issue.body issue.body issue.body issue.body
         issue.body issue.body issue.body issue.body issue.body issue.body
-        issue.body issue.body issue.body issue.body issue.body
+        issue.body issue.body issue.body issue.body issue.body issue.body
+        issue.body issue.body issue.body issue.body issue.body issue.body
+        issue.body issue.body issue.body issue.body issue.body issue.body
+        issue.body issue.body issue.body issue.body issue.body issue.body
+        issue.body issue.body issue.body issue.body issue.body issue.body
+        issue.body issue.body issue.body issue.body issue.body issue.body
+        issue.body issue.body issue.body issue.body issue.body issue.body
+        issue.body issue.body issue.body issue.body
       </S.Content>
     </S.Wrapper>
   );
@@ -28,14 +35,14 @@ export default IssueDetail;
 
 const Wrapper = styled.div`
   width: 80%;
-  padding: 60px;
-  border: 1px dotted purple;
   margin: 0 auto;
+  padding: 80px 0;
 `;
 
 const Title = styled.div`
   font-size: 30px;
   font-weight: bold;
+  padding-bottom: 20px;
 `;
 
 const Info = styled.div`
@@ -43,6 +50,7 @@ const Info = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 20px;
 `;
 
 const Content = styled.div`

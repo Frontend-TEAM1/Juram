@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 `;
 
 const Board = styled.div`
-  width: 80%;
+  width: 100%;
   border: 1px solid red;
   margin: 0 auto;
 `;

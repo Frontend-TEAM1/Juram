@@ -14,10 +14,9 @@ function Filtering() {
 
 export default Filtering;
 
-const Wrapper = styled.div`
+const Wrapper = styled.span`
   background-color: orange;
-  height: 30px;
-  width: 100%;
+  margin-right: 5px;
 `;
 
 const S = {

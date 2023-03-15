@@ -14,10 +14,8 @@ function CardShowOption() {
 
 export default CardShowOption;
 
-const Wrapper = styled.div`
+const Wrapper = styled.span`
   background-color: orange;
-  height: 30px;
-  width: 100%;
 `;
 
 const S = {

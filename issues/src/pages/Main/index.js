@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Card from './component/Card';
+import CardShowOption from './component/CardShowOption';
 import Filtering from './component/Filtering';
 
 function Main() {
@@ -34,7 +35,10 @@ function Main() {
 
   return (
     <>
-      <Filtering></Filtering>
+      <S.Filters>
+        <Filtering />
+        <CardShowOption />
+      </S.Filters>
       <S.Wrapper>
         <Card onClick={() => console.log('옮기자')} />
         {/* <Card onClick={() => navigate(`/issue/${issue.id}`)} /> */}
@@ -52,6 +56,13 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
+const Filters = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px 50px 5px 0;
+`;
+
 const S = {
   Wrapper,
+  Filters,
 };
