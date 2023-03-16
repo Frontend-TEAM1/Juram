@@ -7,7 +7,7 @@ import IssueDetail from './components/IssueDetail';
 const DetailPage = () => {
 	const { number } = useParams();
 	const state = useSelector(state => state.issues.details);
-	
+	window.scrollTo(0, 0);
 
 	return (
 		<div>
