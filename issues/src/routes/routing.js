@@ -1,21 +1,20 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Main from '../pages/Main';
-import Detail from '../pages/Detail';
-import Header from '../Layout/Header';
+import { createBrowserRouter } from 'react-router-dom'
+import DetailPage from 'pages/DetailPage'
+import Layout from '../components/Layout/Layout'
+import HomePage from '../pages/HomePage'
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Header />,
-    children: [
-      { path: '', element: <Main /> },
-      {
-        path: '/haha',
-        // path: '/:nick_name',
-        element: <Detail />,
-      },
-    ],
-  },
-]);
+	{
+		path: '/',
+		element: <Layout />,
+		children: [
+			{ path: '', element: <HomePage /> },
+			{
+				path: '/issue/:number',
+				element: <DetailPage />,
+			},
+		],
+	},
+])
 
-export default router;
+export default router

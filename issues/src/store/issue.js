@@ -1,38 +1,109 @@
 // import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { createSlice } from '@reduxjs/toolkit';
-import { Octokit } from 'octokit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { Octokit } from 'octokit'
 
-const initialState = async () => {
-  const octokit = new Octokit({
-    auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
-  });
+const octokit = new Octokit({
+	auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
+})
 
-  const result = await octokit.request(
-    'GET /repos/angular/angular-cli/issues',
-    {
-      owner: 'OWNER',
-      repo: 'angular-cli',
-      state: 'open',
-      per_page: 10,
-      page: 1,
-    }
-  );
-};
+const initialState = {
+	issues: [],
+	details: [],
+	comments: [],
+	getAllIssues: {
+		loading: false,
+		done: false,
+		error: null,
+	},
+}
 
 export const issueSlice = createSlice({
-  name: 'issue',
-  initialState,
-  // extraReducers: (builder) => {
-  //     // 기능별 함수들
-  //     // addcase가 switch문 처럼
-  //     builder.addCase(thunk로 만든 함수.status, (state) => {
-  //         state.initialState에 있는거 중 변화시킬것
-  //     })
-  // }
-});
+	name: 'issue',
+	initialState,
+	extraReducers: builder => {
+		builder.addCase(getIssues.pending, state => {
+			state.getAllIssues.loading = true
+		})
+		builder.addCase(getIssues.fulfilled, (state, action) => {
+			state.issues = action.payload
+			state.getAllIssues.loading = false
+			state.getAllIssues.done = true
+			state.getAllIssues.error = null
+		})
+		builder.addCase(getIssues.rejected, (state, action) => {
+			state.getAllIssues.loading = false
+			state.getAllIssues.done = true
+			state.getAllIssues.error = action.payload
+		})
+		builder.addCase(getDetails.pending, state => {
+			state.getAllIssues.loading = true
+		})
+		builder.addCase(getDetails.fulfilled, (state, action) => {
+			state.details = action.payload
+			state.getAllIssues.loading = false
+			state.getAllIssues.done = true
+			state.getAllIssues.error = null
+		})
+		builder.addCase(getDetails.rejected, (state, action) => {
+			state.getAllIssues.loading = false
+			state.getAllIssues.done = true
+			state.getAllIssues.error = action.payload
+		})
+		builder.addCase(getComments.pending, state => {
+			state.getAllIssues.loading = true
+		})
+		builder.addCase(getComments.fulfilled, (state, action) => {
+			state.comments = action.payload
+			state.getAllIssues.loading = false
+			state.getAllIssues.done = true
+			state.getAllIssues.error = null
+		})
+		builder.addCase(getComments.rejected, (state, action) => {
+			state.getAllIssues.loading = false
+			state.getAllIssues.done = true
+			state.getAllIssues.error = action.payload
+		})
+	},
+})
 
-// const dd = createAsyncThunk('타입이름. 이 값에 따라 pending fulfilled rejected가 붙은 액션타입이 생김', async (todo액션으로 전달받은 값) => {
-//     const res = await axios.post('url주소', todo)
-//     return res.data
-// })
+export const getIssues = createAsyncThunk('issue/getIssues', async () => {
+	const res = await octokit.request('GET /repos/angular/angular-cli/issues', {
+		owner: 'angular',
+		repo: 'angular-cli',
+		state: 'open',
+		per_page: 10,
+		page: 1,
+	})
+	console.log('ISSUE', res)
+	return res.data
+})
+
+export const getDetails = createAsyncThunk('issue/getDetails', async number => {
+	console.log('reducer', number)
+	const res = await octokit.request(
+		`GET /repos/angular/angular-cli/issues/${number}`,
+		{
+			owner: 'angular',
+			repo: 'angular-cli',
+			issue_number: number,
+		},
+	)
+	console.log('DETAILS', res)
+	return res.data
+})
+
+export const getComments = createAsyncThunk(
+	'issue/getComments',
+	async number => {
+		const res = await octokit.request(
+			`GET /repos/angular/angular-cli/issues/${number}/comments`,
+			{
+				owner: 'angular',
+				repo: 'angular-cli',
+			},
+		)
+		console.log('COMMENTS', res)
+		return res.data
+	},
+)
