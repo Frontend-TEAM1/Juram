@@ -39,13 +39,11 @@ const diaryReducer = (state = initialState, action) => {
       const deletedIdx = deletedState.findIndex(
         (com) => com.id === action.payload.diaryId
       );
-      console.log('1', deletedState[deletedIdx].Comments);
-      deletedState[deletedIdx].Comments.filter(
+      const temp = deletedState[deletedIdx].Comments.filter(
         (item) => item.id !== action.payload.commentId
       );
-      console.log('2', deletedState[deletedIdx].Comments);
-      console.log('deletedState', deletedState);
-      return deletedState;
+      console.log(temp);
+      return temp;
     default:
       return state;
   }
