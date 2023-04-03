@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Header = () => {
   return (
@@ -8,7 +8,7 @@ const Header = () => {
         <HeaderSearch>
           <SearchBar></SearchBar>
           <SearchButton>
-            <img src='Assets/search_icon.png'></img>
+            <img src="Assets/search_icon.png"></img>
           </SearchButton>
         </HeaderSearch>
         <span>now | upcoming | top-rated</span>
@@ -22,7 +22,7 @@ export default Header;
 const HeaderWrapper = styled.div`
   width: 100%;
   min-width: 768px;
-  padding: 40px 100px;
+  padding: 50px 100px;
   background-color: black;
 `;
 
