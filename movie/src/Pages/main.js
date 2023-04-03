@@ -5,10 +5,10 @@ const Main = () => {
     <>
       <S.Post>
         <img src='Assets/theater.png' alt='theater'></img>
-        <span>
-          LET'S WATCH MOVIE <br></br>
+        <PostText>
+          LET'S WATCH MOVIE <br />
           <span>TOGETHER</span>
-        </span>
+        </PostText>
       </S.Post>
     </>
   );
@@ -17,21 +17,32 @@ const Main = () => {
 export default Main;
 
 const Post = styled.div`
-  width: 100%;
-  height: 40%;
+  margin: 0 auto;
+  width: 90%;
+  height: 30%;
   position: relative;
+  display: flex;
   > img {
     width: 100%;
     position: absolute;
   }
+`;
+
+const PostText = styled.div`
+  color: white;
+  font-size: 80px;
+  font-weight: bold;
+  line-height: 100px;
+  padding: 100px 200px;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
   > span {
-    color: white;
-    font-size: 80px;
-    font-weight: bold;
-    position: absolute;
+    color: orange;
   }
 `;
 
 const S = {
   Post,
+  PostText,
 };

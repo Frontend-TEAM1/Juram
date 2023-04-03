@@ -70,6 +70,7 @@ const SearchButton = styled.div`
   align-items: center;
   > img {
     width: 30px;
+    background: none;
   }
 `;
 
